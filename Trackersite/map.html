@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <script
+  src="https://code.jquery.com/jquery-1.12.4.min.js"
+  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #signup{
+        padding: 5px;
+        background-color: gray;
+        border: 1px, solid, black;
+        width: 19%;
+      }
+      #idfield{
+        border: 2px solid white;
+      }
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      .reg {
+        float:left;
+        padding-left: 0px;
+        width: 20%;
+      }
+
+      .input[type=number] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+        -webkit-appearance: none; 
+        margin: 0; 
+      }
+      .input[type=text] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      input[type=submit] {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      input[type=submit]:hover {
+        background-color: #45a049;
+      }
+      .logoheader {
+        border-top: 15px solid turquoise;
+        border-bottom: 15px solid turquoise;
+        background-color: whitesmoke;
+        padding: 10px;
+      }
+      .form {
+        border-top: 8px solid lightblue;
+        border-bottom: 8px solid lightblue;
+        background-color: whitesmoke;
+        padding: 10px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="reg">
+        <div class="logoheader">
+            <span><img src="logomain.png" style="float:left"><p style="color:mediumblue;font-family:sans-serif;text-align:left;font-size:20pt;font-weight:bold;padding-top:8px;">Ripple Systems</h2></span>
+        </div>
+        <div class="form">
+            <p style="color:mediumblue;font-family:sans-serif;text-align:center;font-size:12pt;font-weight:bold">Register Device with its ID:</p>
+            <input type="number" class="input" id="major" placeholder="Major (digits before the dash)"><br>
+            <input type="number" class="input" id="minor" placeholder="Minor (digits after the dash)"><br>
+            <input type="text" class="input" id="nick" placeholder="Nickname"><br>
+            <input type="submit" value="Register" onclick="register()">
+        </div>
+        <div class="form">
+            <input type="submit" value="Remove Currently Stored Devices" onclick = "del()">
+        </div>
+    </div>
+          <div id="map"></div>
+
+    <script>
+      var map;
+      var markers = [];
+      var keyArray = []
+      myStorage = window.localStorage;
+      window.onload = readStorage;
+      keyArray = readStorage();
+
+      function readStorage()
+      {
+        var values = [],
+        keys = Object.keys(localStorage),
+        i = keys.length;
+        while ( i-- ) {
+            values.push(localStorage.getItem(keys[i]));
+        }
+        console.log(values);
+        return values; //returns array of major/minor combinations that the user has previously registered
+      }
+
+
+      function register()
+      {
+        var major = document.getElementById("major").value;
+        var minor = document.getElementById("minor").value;
+        var nick = document.getElementById("nick").value;
+        var stringified = major + "-" + minor;
+        myStorage.setItem(nick,stringified);
+        console.log(myStorage); //register new major/minor combinations
+        window.location.reload()
+      }
+
+      function del()
+      {
+        myStorage.clear();
+        window.location.reload();
+      }
+
+      function updateData() {
+        // remove all the markers
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].setMap(null);
+        }
+        markers = [];
+
+        $.ajax({url: "https://trackerserver-8508b.firebaseio.com/users.json", success: 
+        function(result){
+            console.log(result);
+            $.each(result, function(key, value) {
+              if (keyArray.includes(key)){
+              console.log(key + ": " + " lat: " + value.lat + " lon: " + value.lon);
+              // The location of Uluru
+              var uluru = {lat: value.lat, lng: value.lon};       
+              var image = "greenpin.png"; 
+              // The marker, positioned at Uluru
+              var marker = new google.maps.Marker({
+                position: uluru, 
+                map: map,
+                title: value.name,
+                draggable: false,
+                animation: google.maps.Animation.DROP,
+                icon: image
+              }); 
+              markers.push(marker);     
+            }});
+            
+        }});
+        
+      }
+
+      updateData();
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 33.70, lng: -117.76},
+          zoom: 12
+        });       
+        setInterval(updateData, 10000);
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwxvMl3ZCLS87abguRfb-cyfwuyUE4OVM&callback=initMap"
+    async defer></script>
+  </body>
+</html>
+
