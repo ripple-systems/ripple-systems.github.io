@@ -31,8 +31,8 @@
           <ul class="nav navbar-nav">
             <li><a class="page-scroll" href="#main">Product</a></li>
             <li><a class="page-scroll" href="#features">Features</a></li>
-            <li><a class="page-scroll" href="#methodology">Methodology</a></li>
-            <li><a class="page-scroll" href="#review-section">Team</a></li>
+            <li><a class="page-scroll" href="#review-section">Reviews</a></li>
+            <li><a class="page-scroll" href="#pricing">Pricing</a></li>
             <li><a class="page-scroll" href="#contact">Contact</a></li>
             <li><a href="Trackersite/map.html" style ="background-color: lightseagreen; color: white">Enter Console</a></li>
           </ul>
@@ -53,7 +53,7 @@
             <p class="wow fadeInUp" data-wow-delay="0.2s">A proximity sensor system designed to serves a variety of purposes, from simple object-tracking all the way to complex emergency locating. </p>
             <a href="Trackersite/map.html" class="console" style="width: 200px; text-align: center; background-color: lightseagreen" >Enter Console >></a>  
             <div class="sub-form wow fadeInUp" data-wow-delay="0.3s">
-              <form class="subscribe-form wow zoomIn" action="mailto:mikequmrsh@gmail.com">
+              <form class="subscribe-form wow zoomIn" action="php/subscribe.php" method="post" name="subscribeform" id="subscribeform">
               <input class="mail" type="email" name="email" placeholder="Join the mailing list" autocomplete="off" id="subemail">
               <input class="submit-button" type="submit" value="Subscribe" name="send" id="subsubmit">
             </form><br>
@@ -67,11 +67,23 @@
       </div>
     </div>
     
+    
     <!-- Client Section -->
-
+    <div class="client-section">
+        <div class="container text-center">
+          <div class="clients owl-carousel owl-theme">
+            <div class="single"> <img src="images/client1.png" alt="Image" /> </div>
+            <div class="single"> <img src="images/client2.png" alt="Image" /> </div>
+            <div class="single"> <img src="images/client3.png" alt="Image" /> </div>
+            <div class="single"> <img src="images/client1.png" alt="Image" /> </div>
+            <div class="single"> <img src="images/client2.png" alt="Image" /> </div>
+            <div class="single"> <img src="images/client3.png" alt="Image" /> </div>
+          </div>
+        </div>
+      </div>
     <div class="app-features text-center" id="features">
       <div class="container">
-        <h1 class="wow fadeInDown" data-wow-delay="0.1s">Features & Overviews</h1>
+        <h1 class="wow fadeInDown" data-wow-delay="0.1s">Features & Overview</h1>
         <p class="wow fadeInDown" data-wow-delay="0.2s"> Our products are designed to solve real-world problems efficiently and reliably,<br class="hidden-xs">
           used for personal item-tracking, emergency positioning and so on. </p>
         <div class="col-md-4 features-left">
@@ -79,7 +91,7 @@
             <div class="icon"> <i class="ion-ios-analytics-outline"></i> </div>
             <div class="feature-single">
               <h1>Analytics</h1>
-              <p> Information obtained from sensors is processed using artificial intelligence to determine the device's location as accrately as possible. </p>
+              <p> Information obtained from sensors is processed using an AI-based algorithm to determine the device's location as accrately as possible. </p>
             </div>
           </div>
           <div class="col-md-12 wow fadeInDown" data-wow-delay="0.3s">
@@ -125,10 +137,10 @@
     </div>
     <div class="split-features">
       <div class="col-md-6 nopadding">
-        <div class="split-image"> <img class="img-responsive wow fadeIn" src="images/pi.png" style="padding-top: 140px"alt="Image" /> </div>
+        <div class="split-image"> <img class="img-responsive wow fadeIn" src="images/norm_beacon.png" alt="Image" /> </div>
       </div>
       <div class="col-md-6 nopadding">
-        <div class="split-content" id="methodology">
+        <div class="split-content">
           <h1 class="wow fadeInUp">How it works</h1>
           <p class="wow fadeInUp"> Ripple System Devices are able to constantly broadcast Bluetooth signals that can be picked up by a variety of supported devices.</p>
           <ul class="wow fadeInUp">
@@ -163,37 +175,37 @@
     
     
     <div class="pitch text-center">
-            <div class="container">
-              <div class="pitch-intro">
-                <h1 class="wow fadeInDown" data-wow-delay="0.2s">Research and Achievements</h1>
-                <p class="wow fadeInDown" data-wow-delay="0.2s"> International Conference on Data Management Systems 10/2019 <br> International Conference on Computer Science, Engineering and Applications 12/2018 <br> International Journal of Artificial Intelligence and Applications 1/2019</p>
-              </div>
-              <div class="col-md-12">
-                <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s">
-                  <div class="pitch-icon"> <i class="ion-ios-checkmark-outline"></i> </div>
-                  <div class="pitch-content">
-                    <h1>Published research</h1>
-                  </div>
-                </div>
-                <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s">
-                  <div class="pitch-icon"> <i class="ion-ios-mic-outline"></i> </div>
-                  <div class="pitch-content">
-                    <h1>Startup Incubator</h1>
-                  </div>
-                </div>
-                <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s">
-                  <div class="pitch-icon"> <i class="ion-ios-folder-outline"></i> </div>
-                  <div class="pitch-content">
-                    <h1>Acquired Patent</h1>
-                  </div>
-                </div>
-              </div>
+      <div class="container">
+        <div class="pitch-intro">
+          <h1 class="wow fadeInDown" data-wow-delay="0.2s">Awards and Achievements</h1>
+          <p class="wow fadeInDown" data-wow-delay="0.2s"> International Conference on Data Management Systems 10/2019 <br> International Conference on Computer Science, Engineering and Applications 12/2018 <br> International Journal of Artificial Intelligence and Applications 1/2019</p>
+        </div>
+        <div class="col-md-12">
+          <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s">
+            <div class="pitch-icon"> <i class="ion-ios-checkmark-outline"></i> </div>
+            <div class="pitch-content">
+              <h1>Published research</h1>
             </div>
           </div>
+          <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s">
+            <div class="pitch-icon"> <i class="ion-ios-mic-outline"></i> </div>
+            <div class="pitch-content">
+              <h1>Startup Incubator</h1>
+            </div>
+          </div>
+          <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s">
+            <div class="pitch-icon"> <i class="ion-ios-folder-outline"></i> </div>
+            <div class="pitch-content">
+              <h1>Acquired Patent</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="feature-sub">
       <div class="container">
         <div class="sub-inner">
-          <h1 class="wow fadeInUp">A Convenient, Intuitive and Reliable locating device, for your friends and families</h1>
+          <h1 class="wow fadeInUp">A Convenient, Intuitive and Reliable locating device, for your friends and your family</h1>
           <a href="Trackersite/map.html" class="btn btn-action wow fadeInUp">Enter Console</a> </div>
       </div>
     </div>
@@ -201,10 +213,10 @@
       <div class="container">
         <div class="col-md-10 col-md-offset-1">
           <div class="reviews owl-carousel owl-theme">
-            <div class="review-single"><img class="img-circle" src="images/me.png" alt="Client Testimonoal" />
+            <div class="review-single"><img class="img-circle" src="images/me.png" alt="Founder" />
               <div class="review-text wow fadeInUp" data-wow-delay="0.2s">
-                <p>Currently a senior in high school, Mike is an aspiring engineer and entreprenuer. He has been involved in various projects, as well as the local chapter of NASA's Cubesat Launch Initiative, sending educational satellites into space. In addition, he volunteers with Cal Poly Pomona's IgniteCS team to bring STEM education to underprivileged communities.</p>
-                <h3>Mike (Zhengyu) Qu</h3>
+                <p>Morbi eget dictum enim. Praesent sed quam sit amet lorem tempor rhoncus. <br>In hac habitasse platea dictumst. Vivamus in accumsan ex</p>
+                <h3>Zhengyu (Mike) Qu</h3>
                 <h3>Founder of Ripple Systems</h3>
               </div>
             </div>
@@ -217,11 +229,13 @@
     <div class="cta-sub no-color">
       <div class="container">
         <div class="cta-inner">
-          <h1 class="wow fadeInUp" data-wow-delay="0s">Sign Up to Our Newsletter and get exciting offers</h1><br>
+          <h1 class="wow fadeInUp" data-wow-delay="0s">Sign Up to Our Newsletter and get exciting offers</h1>
+          <p class="wow fadeInUp" data-wow-delay="0.2s"> Enter your email address we promise, never disclose<br class="hidden-xs">
+             or sell your email address. </p>
           <div class="form wow fadeInUp" data-wow-delay="0.3s">
-            <form class="subscribe-form center-form wow zoomIn" action ="mailto:mikequmrsh@gmail.com">
+            <form class="subscribe-form center-form wow zoomIn" action="php/subscribe.php" method="post" name="subscribeform" id="subscribeform">
               <input class="mail" type="email" name="email" placeholder="Join the wait list" autocomplete="off" id="subemail">
-              <input class="submit-button" type="submit" value="Subscribe" name="send" id="subsubmit" href="mailto:mikequmrsh@gmail.com"">
+              <input class="submit-button" type="submit" value="Subscribe" name="send" id="subsubmit">
             </form>
               <!-- subscribe message -->
         <div id="mesaj"></div>
@@ -235,16 +249,17 @@
     <div class="footer" id="contact">
       <div class="container">
         <div class="col-md-7"> <img src="images/logo.png" width="80" height="30" alt="Image" />
-          <p>  </p>
+          <p> Lorem ipsum dolor sit. Incidunt laborum beatae earum nihil odio consequatur officiis
+tempore consequuntur officia ducimus unde doloribus quod unt repell  </p>
           <div class="footer-text">
             <p> Copyright © 2019 Ripple Systems. All Rights Reserved. </p>
           </div>
         </div>
         <div class="col-md-5">
             <h1>Contact Us</h1>
-            <p> Feel free to contact us if you have any <br class="hidden-xs">
+            <p> Contact our customer support if you have any <br class="hidden-xs">
               questions. We'll help you out. </p>
-            <a href="mailto:mikequmrsh@gmail.com">mikequmrsh@gmail.com</a> </div>
+            <a href="mailto:support@gmail.com">contact@ripple-systems.com</a> </div>
         </div>
       </div>
     </div>
