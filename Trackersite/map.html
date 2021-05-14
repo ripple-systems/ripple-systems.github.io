@@ -167,6 +167,11 @@
                 animation: google.maps.Animation.DROP,
                 icon: image
               }); 
+              marker.addListener("click", () => {
+                console.log(uluru);
+                moveToLocation(uluru.lat,uluru.lng)
+                
+              });
               markers.push(marker);     
             }});
             
@@ -182,6 +187,12 @@
         });       
         setInterval(updateData, 10000);
       }
+
+      function moveToLocation(lat, lng){
+        const center = new google.maps.LatLng(lat, lng);
+        map.panTo(center);
+        map.setZoom(15);
+}
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCA4SWDYpN6XzzuFBVVZ76qkNtTc9d7Gso&callback=initMap"
     async defer></script>
